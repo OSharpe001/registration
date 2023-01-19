@@ -2,14 +2,14 @@ import "./App.css";
 import { useState } from "react";
 import { validateEmail } from "./utils";
 
-const PasswordErrorMessage = () => {
+const PasswordErrorMessage = (password) => {
   return (
     <p className="FieldError">Password should have at least 8 characters</p>
   );
 };
 
 function App() {
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState("booga");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState({
@@ -29,6 +29,7 @@ function App() {
     if (firstName.length>2 && validateEmail(email) && password.length>=8 && (role==="individual" || role==="business")) {
       return true;
     }
+    return false
   };
 
   const clearForm = () => {
