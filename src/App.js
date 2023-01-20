@@ -19,21 +19,22 @@ function App() {
   const [role, setRole] = useState("role");
 
   const invalidPW = () => {
-    if (password.length>0 && password.length<8) {
+    if (password.isTouched && password.value.length<8) {
       return PasswordErrorMessage();
     }
   };
 
   const getIsFormValid = () => {
     // Implement this function
-    if (firstName.length>2 && validateEmail(email) && password.length>=8 && (role==="individual" || role==="business")) {
+    console.log(role)
+    if (firstName.length>1 && validateEmail(email) && password.value.length>=8 && (role==="individual" || role==="business")) {
       return true;
     }
   };
 
   const clearForm = () => {
     // Implement this function
-    setRole("role")
+    setRole("role");
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -86,7 +87,10 @@ function App() {
             <input placeholder="Password" 
               type="password"
               value={password.value} 
-              onChange={e => setPassword(e.target.value)}
+              onChange={e => setPassword({
+                value:e.target.value,
+                isTouched: true
+              })}
             />
             <div>{invalidPW()}</div>
           </div>
