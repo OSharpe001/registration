@@ -1,6 +1,6 @@
 import './App.css'; 
 import {useState} from "react"; 
-import {validateEmail} from "../src/utils"; 
+import {validateEmail} from "./utils"; 
  
 const PasswordErrorMessage = () => { 
  return ( 
